@@ -5,11 +5,13 @@ class CashRegister
         @discount = discount
         @items = []
         @sub_total
+        @reg_entry = []
     end
     def add_item(title,price,qty=1)
         @sub_total = price * qty
         @total += @sub_total
         qty.times{ @items << title }
+        @reg_entry << {title => qty}
     end
     def apply_discount
         if @discount == 0 || @discount == 0.0
@@ -25,6 +27,8 @@ class CashRegister
     end
     def void_last_transaction
         @total -= @sub_total
+        @reg_entry.pop
+        puts reg_entry
     end
 end
 
