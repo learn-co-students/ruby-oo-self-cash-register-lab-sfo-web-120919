@@ -28,7 +28,6 @@ class CashRegister
     def void_last_transaction
         @total -= @sub_total
         @reg_entry.pop
-        puts reg_entry
     end
 end
 
