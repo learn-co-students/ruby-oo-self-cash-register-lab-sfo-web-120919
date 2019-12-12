@@ -1,6 +1,6 @@
 describe 'CashRegister' do
-  let(:cash_register) { CashRegister.new }
-  let(:cash_register_with_discount) { CashRegister.new(20) }
+  let(:cash_register) { CashRegister.new(0) }
+  let(:cash_register_with_discount) { CashRegister.new }
 
   describe '::new' do
     it 'sets an instance variable @total on initialization to zero' do
@@ -52,7 +52,7 @@ describe 'CashRegister' do
       end
 
       it 'reduces the total' do
-        cash_register.total = 0
+        cash_register_with_discount.total = 0
         cash_register_with_discount.add_item("macbook air", 1000)
         expect{cash_register_with_discount.apply_discount}.to change{cash_register_with_discount.total}.by(-200)
       end
